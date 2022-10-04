@@ -57,16 +57,20 @@
         <fieldset id="contact">
           <label style="font-size: 1.5em">Please enter your contact information</label>
           <fieldset>
-            <label for="name" tabindex="1">Your Name *</label>
-            <input type="text" name="name" autocomplete="off" tabindex="1" placeholder="Enter Name" <?html echo isset ($fields['name'])? 'value="'.e($fields['name']).'"':''?>>
+            <%--@declare id="name"--%><label for="name" tabindex="1">Your Name *</label>
+            <input type="text" name="name" autocomplete="off" tabindex="1" placeholder="Enter Name" >
           </fieldset>
           <fieldset>
             <%--@declare id="email"--%><label for="email" tabindex="2">Your Email address * </label>
-            <input type="email" name="email" autocomplete="off" tabindex="2" placeholder="Enter Email"<?html echo isset ($fields['email'])? 'value="'.e($fields['email']).'"':''?>>
+            <label>
+              <input type="email" name="email" autocomplete="off" tabindex="2" placeholder="Enter Email">
+            </label>
           </fieldset>
           <fieldset>
             <%--@declare id="tel"--%><label for="tel" tabindex="3">Your Mobile No. * </label>
-            <input type="tel" name="tel" autocomplete="off" tabindex="3"  placeholder="Enter Mobile No."<?html echo isset ($fields['tel'])? 'value="'.e($fields['tel']).'"':''?>>
+            <label>
+              <input type="tel" name="tel" autocomplete="off" tabindex="3"  placeholder="Enter Mobile No.">
+            </label>
           </fieldset>
           <fieldset>
             <label for="options" tabindex="4">please submit your demand to get a proper offer</label>
@@ -79,8 +83,8 @@
             </div>
           </fieldset>
           <fieldset>
-            <label for="message" >Your Message *</label>
-            <textarea tabindex="5" rows="8" id="comment" name="message"<?html echo isset ($fields['message'])? e($fields['message']):''?>></textarea>
+            <%--@declare id="message"--%><label for="message" >Your Message *</label>
+            <label for="comment"></label><textarea tabindex="5" rows="8" id="comment" name="message"></textarea>
             <button name="submit" type="submit" id="contact-submit"  class="btn btn-primary">Submit</button>
           </fieldset>
         </fieldset>

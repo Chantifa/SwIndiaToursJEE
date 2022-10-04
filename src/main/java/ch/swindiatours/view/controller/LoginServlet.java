@@ -23,12 +23,13 @@ public class LoginServlet extends HttpServlet {
         try {
             String firstname = request.getParameter("firstname");
             String lastname = request.getParameter("lastname");
+            String email = request.getParameter("email");
             String password = request.getParameter("password");
             //getting userid and password from user
 
             Customer c = new Customer();
 
-            c.setUsername(firstname, lastname);  //setting them to setters and getters
+            c.setUsername(email);  //setting them to setters and getters
             c.setPassowrd(password);
 
             List<Customer> list = new ArrayList<>(); //take a list

@@ -4,127 +4,114 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "CUSTOMER", schema = "TOURS")
+@Table(name = "users", schema = "login")
 @NamedQueries({
-        @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
-        @NamedQuery(name = "Customer.findAllCities", query = "SELECT DISTINCT(c.city) FROM Customer c"),
-        @NamedQuery(name = "Customer.findById", query = "SELECT c FROM Customer c WHERE c.id = :id"),
-        @NamedQuery(name = "Customer.findByFirstname", query = "SELECT c FROM Customer c WHERE c.firstname = :firstname"),
-        @NamedQuery(name = "Customer.findByLastname", query = "SELECT c FROM Customer c WHERE c.lastname = :lastname"),
-        @NamedQuery(name= "Customer.findByUserName", query = "SELECT c FROM Customer c WHERE c.firstname = :firstname AND c.lastname = :lastname"),
-        @NamedQuery(name = "Customer.findByStreet", query = "SELECT c FROM Customer c WHERE c.street = :street"),
-        @NamedQuery(name = "Customer.findByCity", query = "SELECT c FROM Customer c WHERE c.city = :city")})
-public class Customer implements Serializable {
+        @NamedQuery(name = "user.getAll", query = "SELECT users FROM Customer users"),
+        @NamedQuery(name = "user.getById", query = "SELECT users FROM Customer users WHERE users.userId = :id"),
+        @NamedQuery(name = "user.getByUsername", query = "SELECT users FROM Customer users WHERE users.username = :username"),
+})
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
-    @Column(name = "FIRSTNAME")
-    private String firstname;
-    @Column(name = "LASTNAME")
-    private String lastname;
-    @Column(name = "STREET")
-    private String street;
-    @Column(name = "CITY")
-    private String city;
-
-    @Column(name = "PASSWORD")
-    private String password;
-
+public class Customer {
+    private Integer userId;
     private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String role;
 
-    public Customer() {
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getUserId() {
+        return userId;
     }
 
-    public Customer(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getId() {
-        return id;
+    @Basic
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
+    @Basic
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getLastname() {
-        return lastname;
+    @Basic
+    @Column(name = "first_name")
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getStreet() {
-        return street;
+    @Basic
+    @Column(name = "last_name")
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getCity() {
-        return city;
-    }
+       @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer that = (Customer) o;
 
-    public void setCity(String city) {
-        this.city = city;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-
-        if (!(object instanceof Customer)) {
-            return false;
-        }
-
-        Customer other = (Customer) object;
-
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        int result = userId != null ? userId.hashCode() : 0;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-
-        StringBuilder sb = new StringBuilder(getFirstname());
-        sb.append(" ").append(getLastname());
-
-        return sb.toString();
-    }
-
-    public void setUsername(String firstname, String lastname ) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        firstname.concat(lastname);
-    }
-
-    public String getUsername(){
-        return username;
+        return "Customer{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 
     public void setPassowrd(String password) {
         this.password = password;
     }
 
-    public String getPassword(){
+    public String getPassowrd() {
         return password;
     }
 }

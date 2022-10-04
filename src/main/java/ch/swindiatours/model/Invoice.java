@@ -17,7 +17,7 @@ import java.util.Objects;
 @Table(name = "INVOICE", schema = "TOURS")
 @NamedQueries({
         @NamedQuery(name = "Invoice.findAll", query = "SELECT i FROM Invoice i"),
-        @NamedQuery(name = "Invoice.findByCustomerId", query = "SELECT i FROM Invoice i WHERE i.customer.id = :customerId"),
+        @NamedQuery(name = "Invoice.findByCustomerId", query = "SELECT i FROM Invoice i WHERE i.customer.userId = :customerId"),
         @NamedQuery(name = "Invoice.findByCost", query = "SELECT i FROM Invoice i WHERE i.total = :total")})
 public class Invoice implements Serializable {
 
@@ -93,8 +93,8 @@ public class Invoice implements Serializable {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder(customer.getFirstname());
-        sb.append(" ").append(customer.getLastname()).append(" (").append(getTotal()).append(")");
+        StringBuilder sb = new StringBuilder(customer.getFirstName());
+        sb.append(" ").append(customer.getLastName()).append(" (").append(getTotal()).append(")");
 
         return sb.toString();
     }
