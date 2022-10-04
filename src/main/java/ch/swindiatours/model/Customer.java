@@ -1,14 +1,15 @@
 package ch.swindiatours.model;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 
 @Entity
-@Table(name = "users", schema = "login")
+@Table(name = "customer", schema = "customer")
 @NamedQueries({
-        @NamedQuery(name = "user.getAll", query = "SELECT users FROM Customer users"),
-        @NamedQuery(name = "user.getById", query = "SELECT users FROM Customer users WHERE users.userId = :id"),
-        @NamedQuery(name = "user.getByUsername", query = "SELECT users FROM Customer users WHERE users.username = :username"),
+        @NamedQuery(name = "customer.getAll", query = "SELECT customer FROM Customer customer"),
+        @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :id"),
+        @NamedQuery(name = "customer.getByUsername", query = "SELECT customer FROM Customer customer WHERE customer.username = :username"),
+        @NamedQuery(name = "customer.getFristName", query = "SELECT customer FROM Customer customer WHERE customer.firstName = :firstname"),
+        @NamedQuery(name = "customer.getLastName", query = "SELECT customer FROM Customer customer WHERE customer.lastName = :lasttname"),
 })
 
 public class Customer {
@@ -17,7 +18,7 @@ public class Customer {
     private String password;
     private String firstName;
     private String lastName;
-    private String role;
+    private String email;
 
     @Id
     @Column(name = "user_id")
@@ -66,11 +67,22 @@ public class Customer {
         return lastName;
     }
 
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-       @Override
+    @Basic
+    @Column(name = "password")
+    public String getPassowrd() {
+        return password;
+    }
+
+    public void setPassowrd(String password) {
+        this.password = password;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -91,7 +103,6 @@ public class Customer {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 
@@ -103,15 +114,6 @@ public class Customer {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", role='" + role + '\'' +
                 '}';
-    }
-
-    public void setPassowrd(String password) {
-        this.password = password;
-    }
-
-    public String getPassowrd() {
-        return password;
     }
 }

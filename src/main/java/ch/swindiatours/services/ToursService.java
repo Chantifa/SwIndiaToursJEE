@@ -37,6 +37,6 @@ public class ToursService implements IToursService<Tour>  {
 
         @Override
         public List<Tour> findAll() {
-            return tourFacade.findAll();
+            return tourFacade.getAll();
         }
 }

@@ -4,17 +4,22 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaQuery;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class Facade<T> {
+public class Facade<T> implements Serializable {
         private Class<T> entityClass;
-        public Facade(Class<T> entityClass) {
+        private EntityManager em;
+
+    public Facade(Class<T> entityClass) {
             this.entityClass = entityClass;
         }
 
-        protected abstract EntityManager getEntityManager();
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
-        public void create(T entity) {
+    public void create(T entity) {
             getEntityManager().persist(entity);
         }
 
@@ -30,7 +35,7 @@ public abstract class Facade<T> {
             return getEntityManager().find(entityClass, id);
         }
 
-        public List<T> findAll() {
+        public List<T> getAll() {
             CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
             cq.select(cq.from(entityClass));
             return getEntityManager().createQuery(cq).getResultList();

@@ -2,10 +2,18 @@ package ch.swindiatours.services;
 
 import ch.swindiatours.model.Customer;
 
-import java.util.Collection;
+import java.util.List;
 
-public interface ICustomerService extends IToursService<Customer> {
+public interface ICustomerService  {
+    void create(Customer entity);
+
+    void edit(Customer entity);
+
+    void remove(Customer entity);
+
+    Customer find(Object id);
+
     Customer find(Customer entity);
 
-    public Collection<String> findAllCities();
+    List<Customer> getAll();
 }

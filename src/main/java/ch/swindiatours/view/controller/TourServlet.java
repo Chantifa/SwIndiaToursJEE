@@ -1,5 +1,5 @@
 package ch.swindiatours.view.controller;
-import ch.swindiatours.model.Cart;
+import ch.swindiatours.model.CartEntity;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.*;
 
 @WebServlet(name = "tours", value = "/tours")
-public class TourController extends HttpServlet {
+public class TourServlet extends HttpServlet {
 
     public void init(ServletConfig config)
                 throws ServletException {
@@ -25,7 +25,7 @@ public class TourController extends HttpServlet {
             HttpSession session = request.getSession();
             String command = request.getParameter("submit");
 
-            Cart cart = (Cart)session.getAttribute("cart");
+            CartEntity cartEntity = (CartEntity)session.getAttribute("cart");
             // Determine which command to perform
             if ( command.equals("Add to Basket") ) {
                 // Get the item from the request
@@ -34,8 +34,8 @@ public class TourController extends HttpServlet {
                 String desc = request.getParameter("description");
                 String price =  request.getParameter("price");
 
-                // Add the selected item to the cart
-                cart.addItem(id, desc, price, 1);
+                // Add the selected item to the cartEntity
+                cartEntity.addItem(id, desc, price, 1);
 
                 System.out.println(id);
 
@@ -44,18 +44,17 @@ public class TourController extends HttpServlet {
                 System.out.println(price);
 
                 System.out.println("I'm in TourServlet");
-                System.out.println(cart);
-                // }
+                System.out.println(cartEntity);
             }
 
             // Redirect the response
-            // after adding an item to the cart.
+            // after adding an item to the cartEntity.
             response.sendRedirect("index.jsp");
         }
 
         //Get Servlet information
         public String getServletInfo() {
 
-            return "TourController Information";
+            return "TourServlet Information";
         }
 }

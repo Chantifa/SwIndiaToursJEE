@@ -5,17 +5,20 @@ import  ch.swindiatours.persistance.*;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.Stateless;
+import jakarta.transaction.Transactional;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
 
 /**
  *
- * Use stateless name because of ISalesService
+ * Use stateless name because of ICustomerService
  */
 @Stateless(name = "CustomerService")
 @Local
+@ApplicationScoped
+@Transactional
 public class CustomerService implements ICustomerService {
-
     @EJB
     private CustomerFacade customerFacade;
 
@@ -40,17 +43,12 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public List<Customer> findAll() {
-        return customerFacade.findAll();
-    }
-
-    @Override
     public Customer find(Customer entity) {
         return customerFacade.find(entity);
     }
 
-    public List findAllCities() {
-
-        return customerFacade.findAllCities();
+    @Override
+    public List<Customer> getAll() {
+        return (List<Customer>) customerFacade.getAllUsers();
     }
 }

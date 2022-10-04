@@ -3,44 +3,42 @@ package ch.swindiatours.model;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Cart {
-    /*
-     * To change this license header, choose License Headers in Project Properties.
-     * To change this template file, choose Tools | Templates
-     * and open the template in the editor.
-     */
+public class CartEntity {
+
     protected Hashtable items;
 
-    public Cart() {
+    public CartEntity() {
         this.items = new Hashtable();
+
     }
-//private ArrayList<CartItem> Tours =new ArrayList<>();
+
+//private ArrayList<CartItem> products =new ArrayList<>();
 //double total;
     //public void addCartItem(String description, String quantity, String price)
 //{
-//  
+//
 //  CartItem cartItem = new CartItem();
-//       
+//
 //    cartItem.setDescription(description);
 //    cartItem.setPrice(price);
 //    cartItem.setQuantity(quantity);
-//    Tours.add(cartItem);
+//    products.add(cartItem);
 //    //calculateOrderTotal();
-//   
+//
 // }
-//  
+//
 // public void addCartItem(CartItem cartItem) {
-//  Tours.add(cartItem);
+//  products.add(cartItem);
 // }
-//    
-//    
+//
+//
 //    public ArrayList<CartItem> getItems() {
 //
-//        return Tours;
+//        return products;
 //    }
-//    
+//
 //   public void setCartItems(ArrayList allCartItems) {
-//  this.Tours = allCartItems;
+//  this.products = allCartItems;
 // }
 
     public void addItem(String itemId,
@@ -76,6 +74,7 @@ public class Cart {
         return items.elements();
     }
 
+
     public int getNumOfItems() {
 
         Enumeration enume = items.elements();
@@ -86,6 +85,7 @@ public class Cart {
             tmpItem = (String[]) enume.nextElement();
             numOfItems += Integer.parseInt(tmpItem[3]);
         }
+
         return numOfItems;
     }
 }
