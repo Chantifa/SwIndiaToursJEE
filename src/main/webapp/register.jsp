@@ -5,80 +5,46 @@
   Time: 08:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>SwIndia Tours</title>
-    <link rel="shortcut icon" href="resources/img/logo.png">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Register</title>
+
 </head>
 <body>
-<header>
-    <hgroup>
-        <h1 class="title">SwIndia Tours by Gihara</h1>
-    </hgroup>
-    <nav>
-        <ul>
-            <li><a href="index.jsp"><%= "home" %><%!
-                private Object register;
-            %>
-            </a></li>
-            <li><a href="register.jsp"><%= "register" %>
-            </a></li>
-        </ul>
-    </nav>
-</header>
-<form action="register" method="post">
-    <fieldset>
-        <legend><% register %></legend>
-        <table>
+    <h3>Register</h3>
+    <form method="POST" action="RegisterServlet">
+        <table class="table-bordered">
+            <thead>
+            <tr>
+                <th colspan="2">Enter your details</th>
+            </tr>
+            </thead>
             <tbody>
             <tr>
-                <th>
-                    <%--@declare id="email"--%><label for="email"><%email:%></label>
-                </th>
+                <td>Name: </td>
+                <td><input type="text" name="fname" value="" /></td>
             </tr>
             <tr>
-                <td>
-                    <input type="email"
-                           name="email"
-                           size="40"
-                           maxlength="40"
-                           title="muster@example.com"
-                           placeholder="pls enter your email"
-                           pattern=".{6,40}"
-                           required="required">
-                </td>
+                <td>Username: </td>
+                <td><input type="text" name="uname" value="" /></td>
             </tr>
             <tr>
-                <th>
-                    <%--@declare id="password"--%><label for="password"><%password:%></label>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <input type="password"
-                           name="password"
-                           size="10"
-                           maxlength="10"
-                           title="6-10 signals"
-                           placeholder="pls enter your password"
-                           pattern=".{6,10}"
-                           required="required">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <input type="submit">
-                    <input type="reset">
-                </td>
+                <td>Password: </td>
+                <td><input type="password" name="pass" value="" /></td>
             </tr>
             </tbody>
         </table>
-    </fieldset>
+        <br>
+        <input type="submit" class="btn btn-success" value="Register" />
+        <p>Already registered? <a href="login.jsp">Login Here</a><p/>
+<br>
+<jsp:include page="foot.jsp"/>
 </form>
+
+
 </body>
 </html>

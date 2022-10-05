@@ -18,8 +18,8 @@ services:
   glassfish:
     image: glassfish:latest
     ports:
-      - "4848:4848"
-      - "8082:8082"
+      - "4849:4849"
+      - "8083:8083"
 volumes:
   postgres-volume:
   glassfish-volume:
