@@ -10,7 +10,6 @@ import jakarta.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 @Stateless
 public class CustomerFacade extends Facade<Customer> implements Serializable {
@@ -18,7 +17,7 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
     @PersistenceContext
     private EntityManager em;
 
-    public CustomerFacade() {
+    public CustomerFacade(Class<CustomerFacade> entityClass) {
         super(Customer.class);
     }
 

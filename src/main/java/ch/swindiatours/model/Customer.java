@@ -1,15 +1,16 @@
 package ch.swindiatours.model;
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "customer", schema = "customer")
 @NamedQueries({
         @NamedQuery(name = "customer.getAll", query = "SELECT customer FROM Customer customer"),
         @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :id"),
         @NamedQuery(name = "customer.getByUsername", query = "SELECT customer FROM Customer customer WHERE customer.username = :username"),
-        @NamedQuery(name = "customer.getFristName", query = "SELECT customer FROM Customer customer WHERE customer.firstName = :firstname"),
-        @NamedQuery(name = "customer.getLastName", query = "SELECT customer FROM Customer customer WHERE customer.lastName = :lasttname"),
+        @NamedQuery(name = "customer.getByPassword", query = "SELECT customer FROM Customer customer WHERE customer.password = :password"),
+        @NamedQuery(name = "customer.getByFristName", query = "SELECT customer FROM Customer customer WHERE customer.firstName = :firstname"),
+        @NamedQuery(name = "customer.getByLastName", query = "SELECT customer FROM Customer customer WHERE customer.lastName = :lasttname"),
+        @NamedQuery(name = "customer.getByEmail", query = "SELECT customer FROM Customer customer WHERE customer.email = :email")
 })
 
 public class Customer {
@@ -39,6 +40,16 @@ public class Customer {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Basic
@@ -72,16 +83,6 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "password")
-    public String getPassowrd() {
-        return password;
-    }
-
-    public void setPassowrd(String password) {
-        this.password = password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,6 +94,7 @@ public class Customer {
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (email != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         return true;
     }
 
@@ -103,6 +105,7 @@ public class Customer {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 
@@ -114,6 +117,9 @@ public class Customer {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
+
+
 }

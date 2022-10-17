@@ -12,34 +12,6 @@ public class CartEntity {
 
     }
 
-//private ArrayList<CartItem> products =new ArrayList<>();
-//double total;
-    //public void addCartItem(String description, String quantity, String price)
-//{
-//
-//  CartItem cartItem = new CartItem();
-//
-//    cartItem.setDescription(description);
-//    cartItem.setPrice(price);
-//    cartItem.setQuantity(quantity);
-//    products.add(cartItem);
-//    //calculateOrderTotal();
-//
-// }
-//
-// public void addCartItem(CartItem cartItem) {
-//  products.add(cartItem);
-// }
-//
-//
-//    public ArrayList<CartItem> getItems() {
-//
-//        return products;
-//    }
-//
-//   public void setCartItems(ArrayList allCartItems) {
-//  this.products = allCartItems;
-// }
 
     public void addItem(String itemId,
                         String desc,

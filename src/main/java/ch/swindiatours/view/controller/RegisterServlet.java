@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @WebServlet(name="register", value="/register")
 public class RegisterServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -38,10 +39,16 @@ public class RegisterServlet extends HttpServlet {
         Customer c = new Customer();
 
         c.setUsername(username);
-        c.setPassowrd(pwd);
+        c.setPassword(pwd);
         c.setFirstName(firstname);
         c.setLastName(lastname);
-        request.getRequestDispatcher("register.jsp").include(request, response);
-        out.print("<center><p>Please Enter Valid Details to Register</p></center>");
+        if(firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || pwd.isEmpty()) {
+            request.getRequestDispatcher("register.jsp").include(request, response);
+            out.print("<center><p>Please Enter Valid Details to Register</p></center>");
+        }
+        else {
+            request.getRequestDispatcher("register_2.jsp").include(request, response);
+        }
+
     }
 }

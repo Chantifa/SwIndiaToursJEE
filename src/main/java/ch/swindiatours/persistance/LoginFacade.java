@@ -22,9 +22,9 @@ public class LoginFacade extends Facade<Customer> implements Serializable {
         return em;
     }
 
-    public List<Customer> findByCustomer(String username) {
+    public List<Customer> findAll(String username) {
 
-        Query query = em.createNamedQuery("Customer.findByUserName");
+        Query query = em.createNamedQuery("customer.getByUsername");
         query.setParameter("username", username);
 
         return query.getResultList();
