@@ -2,7 +2,7 @@ package ch.swindiatours.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "customer", schema = "customer")
+@Table(name = "customer", schema = "swindiatours")
 @NamedQueries({
         @NamedQuery(name = "customer.getAll", query = "SELECT customer FROM Customer customer"),
         @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :id"),
@@ -120,6 +120,4 @@ public class Customer {
                 ", email='" + email + '\'' +
                 '}';
     }
-
-
 }

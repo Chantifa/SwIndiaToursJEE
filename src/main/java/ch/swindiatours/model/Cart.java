@@ -3,11 +3,11 @@ package ch.swindiatours.model;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class CartEntity {
+public class Cart {
 
     protected Hashtable items;
 
-    public CartEntity() {
+    public Cart() {
         this.items = new Hashtable();
 
     }

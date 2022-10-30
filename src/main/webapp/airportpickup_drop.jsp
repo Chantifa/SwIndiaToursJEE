@@ -21,17 +21,7 @@
   <nav id="topnav">
     <ul>
       <li><a href="airportpickup_drop.jsp">Airport pickup & drop</a></li>
-      <li><a href="delhi.html">Delhi</a></li>
-      <li><a href="punjab.html">Punjab</a></li>
-      <li><a href="rajasthan.html">Rajasthan</a></li>
-      <li><a href="uttarpradesh.html">Uttarpradesh</a></li>
-      <li><a href="mix.html">Mix Tours</a></li>
-      <li><a href="uttrakhand.html">Uttarkhand</a></li>
-      <li><a href="kashmir.html">Kashmir</a></li>
-      <li><a href="himalayas.html">Himalayas</a></li>
-      <li><a href="madhyapradesh.html">Madhyapradesh</a></li>
-      <li><a href="goa.html">Goa</a></li>
-      <li><a href="outsideIndia.html">Outside India</a></li>
+      <li><a href="orders.jsp">Rajasthan</a></li>
       <li><a href="javascript:void(0);" class="icon" onclick="menuOnAndOff()">
         <i class="fa fa-bars"></i>
       </a></li>

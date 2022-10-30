@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             Customer c = new Customer();
 
             c.setUsername(email);  //setting them to setters and getters
-            c.setPassowrd(password);
+            c.setPassword(password);
 
             List<Customer> list = new ArrayList<>(); //take a list
             list.add(c);

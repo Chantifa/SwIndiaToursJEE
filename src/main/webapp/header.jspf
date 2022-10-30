@@ -1,0 +1,24 @@
+<header>
+
+    <a href="index.jsp" class="logo">Taxi Services & <br> Tour Bookings</a>
+
+    <nav id="topnav">
+        <ul>
+            <li><a href="airportpickup_drop.jsp">Airport pickup & drop</a></li>
+            <li><a href="delhi.jsp">Delhi</a></li>
+            <li><a href="punjab.jsp">Punjab</a></li>
+            <li><a href="rajasthan.jsp">Rajasthan</a></li>
+            <li><a href="uttarpradesh.jsp">Uttarpradesh</a></li>
+            <li><a href="mix.jsp">Mix Tours</a></li>
+            <li><a href="uttrakhand.jsp">Uttarkhand</a></li>
+            <li><a href="kashmir.jps">Kashmir</a></li>
+            <li><a href="himalayas.jsp">Himalayas</a></li>
+            <li><a href="madhyapradesh.jsp">Madhyapradesh</a></li>
+            <li><a href="goa.jsp">Goa</a></li>
+            <li><a href="outsideIndia.jsp">Outside India</a></li>
+            <li><a href="javascript:void(0);" class="icon" onclick="menuOnAndOff()">
+                <i class="fa fa-bars"></i>
+            </a></li>
+        </ul>
+    </nav>
+</header>

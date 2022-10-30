@@ -4,9 +4,11 @@ services:
 
   db:
     container_name: persistance
-    build: main/java/ch/swindiatours/persistance
+    image: swindiatoursdb
+    build: main/java/ch/swindiatours/persistance/db
     volumes:
       - postgres-volume:/var/lib/postgresql/data
+        - DDL.sql:/docker-entrypoint-initdb.d/DDL.sql
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
@@ -14,13 +16,6 @@ services:
     ports:
       - 5432:5432
     restart: always
-
-  glassfish:
-    image: glassfish:latest
-    ports:
-      - "4849:4849"
-      - "8083:8083"
 volumes:
   postgres-volume:
-  glassfish-volume:
 

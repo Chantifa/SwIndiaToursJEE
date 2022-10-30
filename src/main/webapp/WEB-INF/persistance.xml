@@ -9,6 +9,8 @@
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="jakarta.persistence.sql-load-script-source" value="META-INF/defaultdata.sql"/>
             <property name="eclipselink.logging.level" value="FINEST"/>
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="C:/temp/createDDL.sql"/>
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="C:/tmp/dropDDL.sql"/>
         </properties>
     </persistence-unit>
 </persistence>

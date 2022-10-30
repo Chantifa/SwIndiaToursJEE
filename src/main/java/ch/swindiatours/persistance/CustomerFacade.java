@@ -26,13 +26,13 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
 
     public HashMap<String, Customer> getAllUsersMap(){
         HashMap<String, Customer> users = new HashMap<>();
-        for(Customer user : getAllUsers()){
+        for(Customer user : getAll()){
             users.put(user.getUsername(), user);
         }
         return users;
     }
 
-    public Collection<Customer> getAllUsers(){
+    public Collection<Customer> getAllCustomers(){
         return entityManager.createNamedQuery("customer.getAll", Customer.class).getResultList();
     }
 
@@ -44,19 +44,11 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
         return entityManager.createNamedQuery("customer.getByUsername", Customer.class).setParameter("username", username).getSingleResult();
     }
 
-    public void addUser(Customer user) {
+    public void create(Customer customer) {
         entityManager.getTransaction().begin();
-        entityManager.persist(user);
+        entityManager.persist(customer);
         entityManager.flush();
-        entityManager.refresh(user);
-        entityManager.getTransaction().commit();
-    }
-
-
-    public void updatePermission(String role, Customer user){
-        entityManager.getTransaction().begin();
-        entityManager.flush();
-        entityManager.refresh(user);
+        entityManager.refresh(customer);
         entityManager.getTransaction().commit();
     }
 }

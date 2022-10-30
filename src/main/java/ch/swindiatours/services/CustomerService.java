@@ -49,6 +49,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public List<Customer> getAll() {
-        return (List<Customer>) customerFacade.getAllUsers();
+        return (List<Customer>) customerFacade.getAll();
     }
 }

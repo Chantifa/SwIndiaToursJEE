@@ -12,7 +12,6 @@
     <title>Login</title>
 </head>
 <body>
-<center>
     <h3>Login</h3>
     <form method="post" action="LoginServlet">
 
@@ -29,19 +28,15 @@
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" name="pass" value="" /></td>
+                <td><input type="password" name="password" value="" /></td>
             </tr>
             </tbody>
         </table>
         <br>
         <input type="submit" class="btn btn-primary" value="Login" />
         <p> Not Registered? <a href="register.jsp">Register Here</a></p>
-</center>
 <br>
-<jsp:include page="foot.jsp"/>
+<jsp:include page="foot.jspf"/>
 </form>
-</body>
-</html>
-
 </body>
 </html>

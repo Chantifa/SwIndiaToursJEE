@@ -1,5 +1,5 @@
 package ch.swindiatours.view.controller;
-import ch.swindiatours.model.CartEntity;
+import ch.swindiatours.model.Cart;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,7 +25,7 @@ public class TourServlet extends HttpServlet {
             HttpSession session = request.getSession();
             String command = request.getParameter("submit");
 
-            CartEntity cartEntity = (CartEntity)session.getAttribute("cart");
+            Cart cartEntity = (Cart)session.getAttribute("cart");
             // Determine which command to perform
             if ( command.equals("Add to Basket") ) {
                 // Get the item from the request
