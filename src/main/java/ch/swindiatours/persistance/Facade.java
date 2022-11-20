@@ -1,5 +1,7 @@
 package ch.swindiatours.persistance;
 
+import ch.swindiatours.model.Tour;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -10,10 +12,8 @@ import java.util.List;
 public class Facade<T> implements Serializable {
         private Class<T> entityClass;
         private EntityManager em;
-
-    public Facade(Class<T> entityClass) {
-            this.entityClass = entityClass;
-        }
+        public Facade(Class<T> customerClass) {
+    }
 
     protected EntityManager getEntityManager() {
         return em;

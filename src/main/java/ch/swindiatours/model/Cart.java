@@ -2,10 +2,12 @@ package ch.swindiatours.model;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.logging.Logger;
 
 public class Cart {
+    private static final Logger LOGGER = Logger.getLogger(Cart.class.getName());
 
-    protected Hashtable items;
+       protected Hashtable items;
 
     public Cart() {
         this.items = new Hashtable();

@@ -6,10 +6,8 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.Stateless;
 
-@Stateless(name = "LoginService")
 @Local
 public class LoginServices implements ILoginService {
-        @EJB
         private CustomerFacade customerFacade;
 
         @Override

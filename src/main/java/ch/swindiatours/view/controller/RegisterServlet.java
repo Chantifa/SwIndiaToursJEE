@@ -1,9 +1,12 @@
 package ch.swindiatours.view.controller;
 
 import ch.swindiatours.model.Customer;
+import ch.swindiatours.persistance.CustomerFacade;
+import ch.swindiatours.persistance.Facade;
 import ch.swindiatours.services.CustomerService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -44,14 +47,12 @@ public class RegisterServlet extends HttpServlet {
         final String username = email;
         final UUID id = UUID.randomUUID();
 
-        Customer c = new Customer();
-
-        c.setFirstName(firstname);
-        c.setLastName(lastname);
-        c.setUsername(username);
-        c.setEmail(email);
-        c.setPassword(pwd);
-
+        Customer customer = new Customer();
+        customer.setPassword(pwd);
+        customer.setUsername(username);
+        customer.setEmail(email);
+        customer.setFirstName(firstname);
+        customer.setLastName(lastname);
         // Check if password repeat is correct
         if (!(lastname.isEmpty() || firstname.isEmpty() ||
                 username.isEmpty() || email.isEmpty() ||
@@ -61,8 +62,8 @@ public class RegisterServlet extends HttpServlet {
 
                 final HttpSession session = request.getSession();
 
-                customerService.create(c);
-                session.setAttribute("customer", c);
+                customerService.create(customer);
+                session.setAttribute("customer", customer);
 
             }
 

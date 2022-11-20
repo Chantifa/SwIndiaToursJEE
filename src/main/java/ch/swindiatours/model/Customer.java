@@ -1,8 +1,7 @@
 package ch.swindiatours.model;
+import jakarta.annotation.Resource;
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "customer", schema = "swindiatours")
 @NamedQueries({
         @NamedQuery(name = "customer.getAll", query = "SELECT customer FROM Customer customer"),
         @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :id"),
@@ -13,8 +12,11 @@ import jakarta.persistence.*;
         @NamedQuery(name = "customer.getByEmail", query = "SELECT customer FROM Customer customer WHERE customer.email = :email")
 })
 
+@Entity
+@Table(name = "Customer")
+@Resource(name = "jdbc/swindiatours")
 public class Customer {
-    private Integer userId;
+    private Long userId;
     private String username;
     private String password;
     private String firstName;
@@ -22,13 +24,13 @@ public class Customer {
     private String email;
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -63,7 +65,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "first_name")
+    @Column(name = "firstname")
     public String getFirstName() {
         return firstName;
     }
@@ -73,7 +75,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "last_name")
+    @Column(name = "lastname")
     public String getLastName() {
         return lastName;
     }

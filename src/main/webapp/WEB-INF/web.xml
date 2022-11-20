@@ -3,4 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+    <data-source>
+        <name>java:global/jdbc/swindiatours</name>
+        <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
+        <server-name>127.0.0.1</server-name>
+        <database-name>swindia</database-name>
+        <user>posgres</user>
+        <password>secret</password>
+    </data-source>
 </web-app>

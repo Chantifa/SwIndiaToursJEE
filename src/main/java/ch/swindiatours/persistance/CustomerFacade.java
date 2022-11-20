@@ -3,8 +3,6 @@ package ch.swindiatours.persistance;
 import ch.swindiatours.model.Customer;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 
 import java.io.Serializable;
@@ -13,16 +11,13 @@ import java.util.HashMap;
 
 @Stateless
 public class CustomerFacade extends Facade<Customer> implements Serializable {
-
     @PersistenceContext
     private EntityManager em;
 
     public CustomerFacade(Class<CustomerFacade> entityClass) {
+
         super(Customer.class);
     }
-
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     public HashMap<String, Customer> getAllUsersMap(){
         HashMap<String, Customer> users = new HashMap<>();
@@ -33,22 +28,22 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
     }
 
     public Collection<Customer> getAllCustomers(){
-        return entityManager.createNamedQuery("customer.getAll", Customer.class).getResultList();
+        return em.createNamedQuery("customer.getAll", Customer.class).getResultList();
     }
 
     public Customer getUserByID(int id){
-        return entityManager.createNamedQuery("customer.getById", Customer.class).setParameter("id", id).getSingleResult();
+        return em.createNamedQuery("customer.getById", Customer.class).setParameter("id", id).getSingleResult();
     }
 
     public Customer getUserByUsername(String username){
-        return entityManager.createNamedQuery("customer.getByUsername", Customer.class).setParameter("username", username).getSingleResult();
+        return em.createNamedQuery("customer.getByUsername", Customer.class).setParameter("username", username).getSingleResult();
     }
 
     public void create(Customer customer) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(customer);
-        entityManager.flush();
-        entityManager.refresh(customer);
-        entityManager.getTransaction().commit();
+        em.getTransaction().begin();
+        em.persist(customer);
+        em.flush();
+        em.refresh(customer);
+        em.getTransaction().commit();
     }
 }

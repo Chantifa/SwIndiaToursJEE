@@ -1,15 +1,15 @@
 package ch.swindiatours.model;
 
 public class Order {
-    private int id;
+    private int id_order;
     private double totalPrice;
     private Customer customer;
 
     public int getId() {
-        return id;
+        return id_order;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id_order) {
+        this.id_order = id_order;
     }
     public double getTotalPrice() {
         return totalPrice;

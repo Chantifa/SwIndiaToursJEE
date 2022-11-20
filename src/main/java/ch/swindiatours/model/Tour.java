@@ -1,66 +1,62 @@
 package ch.swindiatours.model;
+import jakarta.annotation.Resource;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "TOUR", schema = "TOURS")
+@Table(name = "Tour")
 @NamedQueries({
-        @NamedQuery(name = "Tour.findAll", query = "SELECT p FROM Tour p"),
-        @NamedQuery(name = "Tour.findById", query = "SELECT p FROM Tour p WHERE p.id = :id"),
-        @NamedQuery(name = "Tour.findByName", query = "SELECT p FROM Tour p WHERE p.name = :name"),
-        @NamedQuery(name = "Tour.findByDescription", query = "SELECT p FROM Tour p WHERE p.name = :description"),
-        @NamedQuery(name = "Tour.findByPrice", query = "SELECT p FROM Tour p WHERE p.price = :price")})
+        @NamedQuery(name = "tour.findAll", query = "SELECT p FROM Tour p"),
+        @NamedQuery(name = "tour.findById", query = "SELECT p FROM Tour p WHERE p.tourId = :id"),
+        @NamedQuery(name = "tour.findByTitle", query = "SELECT p FROM Tour p WHERE p.titel = :name"),
+        @NamedQuery(name = "tour.findByDescription", query = "SELECT p FROM Tour p WHERE p.description = :description"),
+        @NamedQuery(name = "tour.findByPrice", query = "SELECT p FROM Tour p WHERE p.price = :price")})
 
-
+@Resource(name = "jdbc/swindiatours")
 public class Tour {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
-    @Column(name = "NAME")
-    private String name;
-
-    @Column(name = "DESCRIPTION")
+    @Column(name = "tourId")
+    @NotNull
+    private Long tourId;
+    @Column(name = "titel")
+    @NotNull
+    private String titel;
+    @Column(name = "description")
     private String description;
-    @Column(name = "PRICE")
-    private Double price;
+    @Column(name = "price")
+    private BigDecimal price;
 
     public Tour() {
     }
-
-    public Tour(Integer id) {
-        this.id = id;
+    public Long getId() {
+        return tourId;
     }
 
-    public Integer getId() {
-        return id;
+    public void setId(Long id) {
+        this.tourId = tourId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getTitel() {
+        return titel;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (tourId != null ? tourId.hashCode() : 0);
         return hash;
     }
 
@@ -73,14 +69,14 @@ public class Tour {
 
         Tour other = (Tour) object;
 
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        return !((this.tourId == null && other.tourId != null) || (this.tourId != null && !this.tourId.equals(other.tourId)));
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder("Tour: ");
-        sb.append(getName()).append(" Price: ").append(getPrice().toString());
+        sb.append(getTitel()).append(" Price: ").append(getPrice().toString());
 
         return sb.toString();
     }
@@ -92,4 +88,5 @@ public class Tour {
     public String getDescription(){
         return description;
     }
+
 }
