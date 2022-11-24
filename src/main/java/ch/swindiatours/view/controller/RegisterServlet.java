@@ -1,12 +1,8 @@
 package ch.swindiatours.view.controller;
 
 import ch.swindiatours.model.Customer;
-import ch.swindiatours.persistance.CustomerFacade;
-import ch.swindiatours.persistance.Facade;
 import ch.swindiatours.services.CustomerService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,12 +13,14 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
-import java.util.UUID;
 
-@WebServlet(name="register", value="/register")
+@WebServlet(name = "register", value = "/register")
 public class RegisterServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+
+    @Inject
+    private CustomerService customerService;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,7 +43,6 @@ public class RegisterServlet extends HttpServlet {
 
         final String email = request.getParameter("email");
         final String username = email;
-        final UUID id = UUID.randomUUID();
 
         Customer customer = new Customer();
         customer.setPassword(pwd);
@@ -58,7 +55,6 @@ public class RegisterServlet extends HttpServlet {
                 username.isEmpty() || email.isEmpty() ||
                 pwd.isEmpty() || repeadpwd.isEmpty())) {
             if (checkPassword(pwd, repeadpwd)) {
-                CustomerService customerService = new CustomerService();
 
                 final HttpSession session = request.getSession();
 
@@ -75,9 +71,11 @@ public class RegisterServlet extends HttpServlet {
             }
         }
     }
+
     /**
      * Check if both passwords are equal, if not deny registering
-     * @param pwd the actual password
+     *
+     * @param pwd       the actual password
      * @param repeatPwd the repeated password
      * @return true if both are same, false if both don't match
      */

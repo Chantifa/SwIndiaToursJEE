@@ -1,60 +1,64 @@
 package ch.swindiatours.view.controller;
+
 import ch.swindiatours.model.Cart;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletException;
+import ch.swindiatours.services.ToursService;
+import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.io.*;
+
+import java.io.IOException;
 
 @WebServlet(name = "tours", value = "/tours")
 public class TourServlet extends HttpServlet {
 
-    public void init(ServletConfig config)
-                throws ServletException {
-            super.init(config);
+    @Inject
+    private ToursService toursService;
+
+    //Process the HTTP Post request
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response)
+            throws IOException {
+
+        HttpSession session = request.getSession();
+        String command = request.getParameter("submit");
+
+        Cart cartEntity = (Cart) session.getAttribute("cart");
+        // Determine which command to perform
+        if (command.equals("Add to Basket")) {
+            // Get the item from the request
+            String tourId = request.getParameter("tourId");
+            String tour = request.getParameter("tour");
+
+            String desc = request.getParameter("description");
+            String price = request.getParameter("price");
+
+            // Add the selected item to the cartEntity
+            toursService.findAll();
+
+            cartEntity.addItem(tourId, tour, desc, price, 1);
+
+            System.out.println(tourId);
+            System.out.println(tourId);
+
+            System.out.println(desc);
+
+            System.out.println(price);
+
+            System.out.println("I'm in TourServlet");
+            System.out.println(cartEntity);
         }
 
-        //Process the HTTP Post request
-        public void doPost(HttpServletRequest request,
-                           HttpServletResponse response)
-                throws ServletException, IOException {
+        // Redirect the response
+        // after adding an item to the cartEntity.
+        response.sendRedirect("index.jsp");
+    }
 
-            HttpSession session = request.getSession();
-            String command = request.getParameter("submit");
+    //Get Servlet information
+    public String getServletInfo() {
 
-            Cart cartEntity = (Cart)session.getAttribute("cart");
-            // Determine which command to perform
-            if ( command.equals("Add to Basket") ) {
-                // Get the item from the request
-                String id = request.getParameter("tourId");
-
-                String desc = request.getParameter("description");
-                String price =  request.getParameter("price");
-
-                // Add the selected item to the cartEntity
-                cartEntity.addItem(id, desc, price, 1);
-
-                System.out.println(id);
-
-                System.out.println(desc);
-
-                System.out.println(price);
-
-                System.out.println("I'm in TourServlet");
-                System.out.println(cartEntity);
-            }
-
-            // Redirect the response
-            // after adding an item to the cartEntity.
-            response.sendRedirect("index.jsp");
-        }
-
-        //Get Servlet information
-        public String getServletInfo() {
-
-            return "TourServlet Information";
-        }
+        return "TourServlet Information";
+    }
 }

@@ -1,9 +1,5 @@
 package ch.swindiatours.persistance;
-
-import ch.swindiatours.model.Customer;
 import ch.swindiatours.model.Tour;
-import jakarta.annotation.Resource;
-import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -11,9 +7,9 @@ import jakarta.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
-@Stateless
+
 public class TourFacade extends Facade<Tour> implements Serializable {
-       @PersistenceContext
+       @PersistenceContext(unitName = "swindiatours")
         private EntityManager em;
         public TourFacade() {
             super(Tour.class);
@@ -40,7 +36,7 @@ public class TourFacade extends Facade<Tour> implements Serializable {
         return em.createNamedQuery("tour.findById", Tour.class).setParameter("tourId", tourId).getSingleResult();
     }
 
-    public Tour getItem(String tourId){
+    protected Tour getItem(String tourId){
         return em.createNamedQuery("tour.findById", Tour.class).setParameter("tourId", tourId).getSingleResult();
     }
 

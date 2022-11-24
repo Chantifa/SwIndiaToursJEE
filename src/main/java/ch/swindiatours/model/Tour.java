@@ -1,5 +1,4 @@
 package ch.swindiatours.model;
-import jakarta.annotation.Resource;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,11 +9,10 @@ import java.math.BigDecimal;
 @NamedQueries({
         @NamedQuery(name = "tour.findAll", query = "SELECT p FROM Tour p"),
         @NamedQuery(name = "tour.findById", query = "SELECT p FROM Tour p WHERE p.tourId = :id"),
-        @NamedQuery(name = "tour.findByTitle", query = "SELECT p FROM Tour p WHERE p.titel = :name"),
+        @NamedQuery(name = "tour.findByTitle", query = "SELECT p FROM Tour p WHERE p.title = :name"),
         @NamedQuery(name = "tour.findByDescription", query = "SELECT p FROM Tour p WHERE p.description = :description"),
         @NamedQuery(name = "tour.findByPrice", query = "SELECT p FROM Tour p WHERE p.price = :price")})
 
-@Resource(name = "jdbc/swindiatours")
 public class Tour {
 
     private static final long serialVersionUID = 1L;
@@ -25,11 +23,16 @@ public class Tour {
     private Long tourId;
     @Column(name = "titel")
     @NotNull
-    private String titel;
+    private String title;
     @Column(name = "description")
     private String description;
     @Column(name = "price")
     private BigDecimal price;
+    @Lob
+    @Column(name = "img")
+    private byte[] img;
+
+
 
     public Tour() {
     }
@@ -37,12 +40,16 @@ public class Tour {
         return tourId;
     }
 
-    public void setId(Long id) {
+    public void setId(Long tourId) {
         this.tourId = tourId;
     }
 
     public String getTitel() {
-        return titel;
+        return title;
+    }
+
+    public void setTitel(String title){
+        this.title= title;
     }
 
     public BigDecimal getPrice() {
@@ -89,4 +96,10 @@ public class Tour {
         return description;
     }
 
+    public byte[] getImg() {
+        return img;
+    }
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
 }

@@ -1,20 +1,19 @@
 package ch.swindiatours.persistance;
 
 import ch.swindiatours.model.Customer;
-import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
-@Stateless
+
 public class CustomerFacade extends Facade<Customer> implements Serializable {
-    @PersistenceContext
+    @PersistenceContext(unitName = "swindiatours")
     private EntityManager em;
 
-    public CustomerFacade(Class<CustomerFacade> entityClass) {
+    protected CustomerFacade(Class<CustomerFacade> entityClass) {
 
         super(Customer.class);
     }
@@ -27,12 +26,12 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
         return users;
     }
 
-    public Collection<Customer> getAllCustomers(){
+    public List<Customer> getAllCustomers(){
         return em.createNamedQuery("customer.getAll", Customer.class).getResultList();
     }
 
-    public Customer getUserByID(int id){
-        return em.createNamedQuery("customer.getById", Customer.class).setParameter("id", id).getSingleResult();
+    public Customer getUserByID(int userId){
+        return em.createNamedQuery("customer.getById", Customer.class).setParameter("id", userId).getSingleResult();
     }
 
     public Customer getUserByUsername(String username){
@@ -44,6 +43,21 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
         em.persist(customer);
         em.flush();
         em.refresh(customer);
+        em.getTransaction().commit();
+    }
+
+    public void edit(Customer customer) {
+        em.getTransaction().begin();
+        em.refresh(customer);
+        em.flush();
+        em.refresh(customer);
+        em.getTransaction().commit();
+    }
+
+    public void remove(Customer customer) {
+        em.getTransaction().begin();
+        em.remove(customer);
+        em.flush();
         em.getTransaction().commit();
     }
 }

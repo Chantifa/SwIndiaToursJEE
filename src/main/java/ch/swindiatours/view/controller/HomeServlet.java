@@ -1,7 +1,6 @@
 package ch.swindiatours.view.controller;
 
 import java.io.*;
-
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -23,7 +22,6 @@ public class HomeServlet extends HttpServlet {
         out.println("<nav></nav>");
         out.println("</body></html>");
     }
-
     public void destroy() {
     }
 }

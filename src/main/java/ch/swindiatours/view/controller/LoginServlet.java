@@ -21,8 +21,6 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            String firstname = request.getParameter("firstname");
-            String lastname = request.getParameter("lastname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             //getting userid and password from user
@@ -45,11 +43,11 @@ public class LoginServlet extends HttpServlet {
 
             } else {
                 //if no values are found then the User does not exist
-                request.getRequestDispatcher("login.jsp").include(request, response);
+                request.getRequestDispatcher("login.html").include(request, response);
                 out.print("<p align='center'>Wrong Username/Password. Please try again");
             }
         } catch (Exception e) {
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            request.getRequestDispatcher("login.html").include(request, response);
             out.print("<p>Please Enter Valid Details To Login</p>");
 //executes when user enters invalid details
         }

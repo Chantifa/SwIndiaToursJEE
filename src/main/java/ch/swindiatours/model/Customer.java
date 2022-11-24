@@ -1,5 +1,5 @@
 package ch.swindiatours.model;
-import jakarta.annotation.Resource;
+
 import jakarta.persistence.*;
 
 @NamedQueries({
@@ -14,7 +14,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Customer")
-@Resource(name = "jdbc/swindiatours")
 public class Customer {
     private Long userId;
     private String username;
@@ -22,6 +21,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
+    private String role;
 
     @Id
     @Column(name = "userId")
@@ -85,6 +85,16 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    @Basic
+    @Column(name = "role")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,7 +106,8 @@ public class Customer {
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (email != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (role != null ? !email.equals(that.role) : that.role != null) return false;
         return true;
     }
 
@@ -108,6 +119,7 @@ public class Customer {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 
@@ -120,6 +132,7 @@ public class Customer {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

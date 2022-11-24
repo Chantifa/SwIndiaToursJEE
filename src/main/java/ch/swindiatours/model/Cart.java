@@ -15,30 +15,31 @@ public class Cart {
     }
 
 
-    public void addItem(String itemId,
+    public void addItem(String tourId,
+                        String tour,
                         String desc,
                         String price,
                         int quantity) {
 
-        String[] item = {itemId, desc, price, Integer.toString(quantity)};
+        String[] item = {tourId, tour, desc, price, Integer.toString(quantity)};
 
-        if (items.containsKey(itemId)) {
+        if (items.containsKey(tourId)) {
 
-            String[] tmpItem = (String[]) items.get(itemId);
+            String[] tmpItem = (String[]) items.get(tourId);
             int tmpQuant = Integer.parseInt(tmpItem[3]);
             quantity += tmpQuant;
             tmpItem[3] = Integer.toString(quantity);
         } else {
 
-            items.put(itemId, item);
+            items.put(tourId, item);
         }
     }
 
-    public void updateQuantity(String itemId, int quantity) {
+    public void edit(String tourId, int quantity) {
 
-        if (items.contains(itemId)) {
+        if (items.contains(tourId)) {
 
-            String[] tmpItem = (String[]) items.get(itemId);
+            String[] tmpItem = (String[]) items.get(tourId);
             tmpItem[3] = Integer.toString(quantity);
         }
     }
@@ -47,8 +48,6 @@ public class Cart {
 
         return items.elements();
     }
-
-
     public int getNumOfItems() {
 
         Enumeration enume = items.elements();

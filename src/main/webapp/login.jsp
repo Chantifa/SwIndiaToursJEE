@@ -5,6 +5,7 @@
   Time: 14:36
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="ch.swindiatours.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>

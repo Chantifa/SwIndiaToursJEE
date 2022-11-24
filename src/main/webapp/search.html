@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+	   	<link rel="stylesheet" href="../../../../online_shop_swindia/onlineshop-web/src/main/webapp/resources/bootstrap/css/bootstrap.min.css">
+		<link rel="icon" type="image/png" href="../../../../online_shop_swindia/onlineshop-web/src/main/webapp/resources/img/favicon.png">
+		<script src="../../../../online_shop_swindia/onlineshop-web/src/main/webapp/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="../../../../online_shop_swindia/onlineshop-web/src/main/webapp/resources/js/onlineshop-web.js"></script>
+		<link rel="stylesheet" href="../../../../online_shop_swindia/onlineshop-web/src/main/webapp/resources/css/styles.css">
+		<title>SwIndia Tours</title>
+	</head>
+	<body>
+
+		<!--Navigation bar-->
+		<div id="nav-placeholder"></div>
+		
+		
+		<!-- Hauptteil der Seite -->
+		<main>
+			<div id="search-placeholder"></div>
+
+		</main>
+		
+		<!-- Footer am schluss der Seite -->
+		<div id="footer-placeholder"></div>
+	</body>
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const query = params.get("query");
+		$.get("TourSearch?query=" + query, function(data){
+			$("#search-placeholder").replaceWith(data);
+		});
+	</script>
+</html>
