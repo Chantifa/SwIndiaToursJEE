@@ -1,0 +1,113 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Farben der FFHS:
+#CF021C -> ROT
+#4F2378 -> VIOLET
+*/
+body {
+	margin: 0;
+	font-family: Artial, Helvetica, sans-serif;
+	font-size: calc(1.1em + 1vw);
+	padding: 5px;
+}
+/* --- HEADER --- */
+.header {
+	/*background: url("../img/tau.jpg");*/
+	/*border-radius: 10px;  */
+	/*box-shadow: 5px 5px 9px gray;*/
+	background-image: linear-gradient(135deg, #CF021C, #4F2378);
+	position: fixed;
+	padding: 0.5em;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.title {
+    margin: 0.1em;
+}
+.topRight{
+	text-align:right;
+	
+}
+.title>a {
+	font-size: xxx-large;
+}
+th{
+	text-align: left;
+}
+
+/*INPUT SEARCH*/
+input[type=search] {
+	text-align: center;
+	width: 20%;
+	-webkit-transition: width 0.2s ease-in-out;
+	transition: width 0.2s ease-in-out;
+	height: calc(1.1em + 1vw);
+	border-radius: 10px;
+}
+/* When the input field gets focus, change its width to 100% */
+input[type=search]:focus {
+	width: 30%;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* --- MAIN --- */
+main {
+	height: 120vh;
+	padding-top: 5em;
+	padding-left: 1em;
+}
+
+/* --- FOOTER -- */
+footer {
+	background-image: linear-gradient(135deg, #CF021C, #4F2378);
+	display: flex;
+	justify-content: space-around;
+	height: 2em;
+	align-items: center;
+	position: sticky;
+	left: 0;
+	right: 0;
+	margin: 0;
+	border: 0;
+}
+
+/* -- TEXTE UND LINKS -- */
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffd357;
+	/*text-shadow: 0 0 10px white, 0 0 20px white;*/
+}
