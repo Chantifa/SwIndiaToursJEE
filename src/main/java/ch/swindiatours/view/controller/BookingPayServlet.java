@@ -20,7 +20,7 @@ import java.io.IOException;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/orderPay")
+@WebServlet("/BookingPaid")
 public class BookingPayServlet extends HttpServlet {
 
     /**

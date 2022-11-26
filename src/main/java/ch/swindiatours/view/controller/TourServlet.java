@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "tours", value = "/tours")
+@WebServlet(name = "tours", value = "/Tours")
 public class TourServlet extends HttpServlet {
 
     @Inject

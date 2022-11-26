@@ -9,7 +9,7 @@ import jakarta.enterprise.context.Dependent;
 
 import java.util.List;
 
-@Stateless(name = "ToursService")
+@Stateless(name = "/ToursService")
 @Local
 @Dependent
 public class ToursService implements IToursService<Tour> {

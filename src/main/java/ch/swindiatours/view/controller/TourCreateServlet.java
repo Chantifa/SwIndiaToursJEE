@@ -23,7 +23,7 @@ import java.util.Base64;
  * @version 1.0
  */
 @MultipartConfig
-@WebServlet("/tourCreate")
+@WebServlet("/TourCreate")
 public class TourCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Inject
@@ -37,13 +37,13 @@ public class TourCreateServlet extends HttpServlet {
      *                 title = Title of Artikel
      *                 description = Description of Artikel
      *                 price = Price of Artikel as float or int
-     *                 articleimp = Image of artikel
-     * @param response forward dispatcher to index.html
+     *                 tourimp = Image of artikel
+     * @param response forward dispatcher to index.jsp
      * @throws ServletException
      * @throws IOException
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+        final RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         final HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
         if (customer != null) {
@@ -64,7 +64,7 @@ public class TourCreateServlet extends HttpServlet {
                 toursService.create(tour);
             }
         }
-        // "../index.html" weil root auf /api/ zeigt
+        // "../index.jsp"
         dispatcher.forward(request, response);
     }
 }

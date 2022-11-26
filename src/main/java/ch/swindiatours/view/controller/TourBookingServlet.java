@@ -28,7 +28,7 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/ArticleOrder")
+@WebServlet("/TourBooking")
 public class TourBookingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -65,11 +65,11 @@ public class TourBookingServlet extends HttpServlet {
 
             session.setAttribute("basket", booking);
 
-            // Try getting the article
+            // Try getting the tour
             ToursService tourService = new ToursService();
             Tour tour = tourService.find(tourId);
 
-            // Set orderposition only when article valid
+            // Set orderposition only when tour valid
             if (tour != null) {
                 BookingPosService bookingPosService = new BookingPosService();
                 BookingPos bookingPos;
