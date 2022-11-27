@@ -18,23 +18,23 @@ public class CustomerFacade extends Facade<Customer> implements Serializable {
         super(Customer.class);
     }
 
-    public HashMap<String, Customer> getAllUsersMap(){
+    public HashMap<String, Customer> getAllUsersMap() {
         HashMap<String, Customer> users = new HashMap<>();
-        for(Customer user : getAll()){
+        for (Customer user : getAll()) {
             users.put(user.getUsername(), user);
         }
         return users;
     }
 
-    public List<Customer> getAllCustomers(){
+    public List<Customer> getAllCustomers() {
         return em.createNamedQuery("customer.getAll", Customer.class).getResultList();
     }
 
-    public Customer getUserByID(int userId){
+    public Customer getUserByID(int userId) {
         return em.createNamedQuery("customer.getById", Customer.class).setParameter("id", userId).getSingleResult();
     }
 
-    public Customer getUserByUsername(String username){
+    public Customer getUserByUsername(String username) {
         return em.createNamedQuery("customer.getByUsername", Customer.class).setParameter("username", username).getSingleResult();
     }
 

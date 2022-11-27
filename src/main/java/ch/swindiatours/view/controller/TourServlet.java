@@ -11,10 +11,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "tours", value = "/Tours")
+@WebServlet(name = "tour", value = "/tour")
 public class TourServlet extends HttpServlet {
 
-    @Inject
     private ToursService toursService;
 
     //Process the HTTP Post request
@@ -29,8 +28,8 @@ public class TourServlet extends HttpServlet {
         // Determine which command to perform
         if (command.equals("Add to Basket")) {
             // Get the item from the request
-            String tourId = request.getParameter("tourId");
-            String tour = request.getParameter("tour");
+            String tourId = request.getParameter("title");
+            String img = request.getParameter("img");
 
             String desc = request.getParameter("description");
             String price = request.getParameter("price");
@@ -38,7 +37,7 @@ public class TourServlet extends HttpServlet {
             // Add the selected item to the cartEntity
             toursService.findAll();
 
-            cartEntity.addItem(tourId, tour, desc, price, 1);
+            cartEntity.addItem(tourId, img, desc, price, 1);
 
             System.out.println(tourId);
             System.out.println(tourId);

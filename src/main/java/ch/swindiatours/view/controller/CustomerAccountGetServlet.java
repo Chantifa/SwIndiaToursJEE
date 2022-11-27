@@ -26,7 +26,7 @@ public class CustomerAccountGetServlet extends HttpServlet {
      *
      * @param request  -
      * @param response HTML formatted string of user information
-     *                 Forward to login.html if no valid user signed in
+     *                 Forward to login.jsp if no valid user signed in
      * @throws IOException
      * @throws ServletException
      */
@@ -45,7 +45,7 @@ public class CustomerAccountGetServlet extends HttpServlet {
             out.println("</p>");
         } else {
             // No valid user -> only allow registration/signing and search possible
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         }
     }

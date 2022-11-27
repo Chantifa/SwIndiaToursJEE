@@ -1,8 +1,10 @@
 package ch.swindiatours.services;
 
 import ch.swindiatours.model.Customer;
+import jakarta.inject.Inject;
 
 import java.util.List;
+
 
 public interface ICustomerService  {
     void create(Customer entity);

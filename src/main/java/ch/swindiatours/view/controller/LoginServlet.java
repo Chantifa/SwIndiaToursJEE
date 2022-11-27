@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -43,11 +43,11 @@ public class LoginServlet extends HttpServlet {
 
             } else {
                 //if no values are found then the User does not exist
-                request.getRequestDispatcher("login.html").include(request, response);
+                request.getRequestDispatcher("login.jsp").include(request, response);
                 out.print("<p align='center'>Wrong Username/Password. Please try again");
             }
         } catch (Exception e) {
-            request.getRequestDispatcher("login.html").include(request, response);
+            request.getRequestDispatcher("login.jsp").include(request, response);
             out.print("<p>Please Enter Valid Details To Login</p>");
 //executes when user enters invalid details
         }

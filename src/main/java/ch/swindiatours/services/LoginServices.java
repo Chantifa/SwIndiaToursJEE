@@ -4,7 +4,7 @@ import ch.swindiatours.model.Customer;
 import ch.swindiatours.persistance.CustomerFacade;
 import jakarta.ejb.Local;
 
-@Local
+
 public class LoginServices implements ILoginService {
     private CustomerFacade customerFacade;
 

@@ -45,8 +45,8 @@ public class NavbarServlet extends HttpServlet {
             }
             out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"UserLogout\">logout</a></li>");
         } else {// Not registered user -> only allow registration/signing and search possible
-            out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.html\">login</a></li>");
-            out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"register.html\">registration</a></li>");
+            out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.jsp\">login</a></li>");
+            out.print("<li class=\"nav-item\"><a class=\"nav-link\" href=\"register.jsp\">registration</a></li>");
         }
         out.println("</ul>");
     }

@@ -28,7 +28,7 @@ public class BookingPlacedServlet extends HttpServlet {
      * GET Method to place an order, removing the order from basket and open it to payment.
      *
      * @param request  -
-     * @param response if all successfull forward to booking.html, if no user signed in forward to login.html
+     * @param response if all successfull forward to booking.jsp, if no user signed in forward to login.jsp
      * @throws IOException
      * @throws ServletException
      */
@@ -54,9 +54,9 @@ public class BookingPlacedServlet extends HttpServlet {
                 bookingService.create(booking);
                 session.removeAttribute("basket");
             }
-            dispatcher = request.getRequestDispatcher("booking.html");
+            dispatcher = request.getRequestDispatcher("booking.jsp");
         } else {
-            dispatcher = request.getRequestDispatcher("login.html");
+            dispatcher = request.getRequestDispatcher("login.jsp");
         }
         dispatcher.forward(request, response);
     }

@@ -24,13 +24,13 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/BasketGet")
+@WebServlet("/basket")
 public class BasketGetServlet extends HttpServlet {
 
     /**
      * POST request to get the basket, only valid if Benutzer signed in
      *
-     * @param request  forward to login.html if no valid Signin
+     * @param request  forward to login.jsp if no valid Signin
      * @param response Formwatted HTML of the basket with list of items tours)
      * @throws IOException
      * @throws ServletException
@@ -87,10 +87,10 @@ public class BasketGetServlet extends HttpServlet {
                 out.println("<h2>Booking: " + booking.getBookingId() + "</h2>");
                 out.println("<h2>Orderdate: " + booking.getBookingDate().toLocalDate() + "</h2>");
                 out.println("<h2>Bestellung Total: " + totalPrice + " CHF</h2>");
-                out.println("<h2><a href=\"OrderPlace\">order</a></h2>");
+                out.println("<h2><a href=\"bookingPlaced\">booked</a></h2>");
             }
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         }
     }

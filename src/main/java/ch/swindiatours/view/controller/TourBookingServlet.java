@@ -28,7 +28,7 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/TourBooking")
+@WebServlet("/booking")
 public class TourBookingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,7 @@ public class TourBookingServlet extends HttpServlet {
      *
      * @param request  conatining following parameter:
      *                 tourId - Tour Id of Artikel to be added
-     * @param response if user not logged in, forward to login.html
+     * @param response if user not logged in, forward to login.jsp
      * @throws ServletException
      * @throws IOException
      */
@@ -85,7 +85,7 @@ public class TourBookingServlet extends HttpServlet {
                 }
             }
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         }
     }

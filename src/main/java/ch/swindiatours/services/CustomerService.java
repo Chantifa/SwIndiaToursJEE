@@ -1,10 +1,11 @@
 package ch.swindiatours.services;
 
 import ch.swindiatours.model.Customer;
-import  ch.swindiatours.persistance.*;
+import ch.swindiatours.persistance.CustomerFacade;
 import jakarta.ejb.Local;
 import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Model;
 
 import java.util.List;
 
@@ -12,12 +13,8 @@ import java.util.List;
  *
  * Use stateless name because of IToursService
  */
-@Stateless(name = "CustomerService")
-@Local
-@Dependent
-public class CustomerService implements ICustomerService {
 
-
+public class CustomerService implements ICustomerService{
     private CustomerFacade customerFacade;
 
     @Override

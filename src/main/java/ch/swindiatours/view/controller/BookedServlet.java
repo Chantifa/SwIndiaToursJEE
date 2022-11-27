@@ -26,7 +26,7 @@ public class BookedServlet extends HttpServlet {
     /**
      * GET Method to set order to delivered, only valid if Benutzer is signed in
      *
-     * @param request  forward to booking.html on valid users (Benutzer), if not signed in forward to login.html
+     * @param request  forward to booking.jsp on valid users (Benutzer), if not signed in forward to login.jsp
      * @param response -
      * @throws IOException
      * @throws ServletException
@@ -56,9 +56,9 @@ public class BookedServlet extends HttpServlet {
 
                 }
             }
-            dispatcher = request.getRequestDispatcher("booking.html");
+            dispatcher = request.getRequestDispatcher("booking.jsp");
         } else {
-            dispatcher = request.getRequestDispatcher("login.html");
+            dispatcher = request.getRequestDispatcher("login.jsp");
         }
         dispatcher.forward(request, response);
     }

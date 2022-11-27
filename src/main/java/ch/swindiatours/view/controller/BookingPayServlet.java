@@ -27,7 +27,7 @@ public class BookingPayServlet extends HttpServlet {
      * GET Method to pay an order, only works when user (Benutzer) is signed in.
      *
      * @param request  -
-     * @param response forward to booking.html when successfull or forward to login.html if no user signed in
+     * @param response forward to booking.jsp when successfull or forward to login.jsp if no user signed in
      * @throws IOException
      * @throws ServletException
      */
@@ -55,9 +55,9 @@ public class BookingPayServlet extends HttpServlet {
 
                 }
             }
-            dispatcher = request.getRequestDispatcher("booking.html");
+            dispatcher = request.getRequestDispatcher("booking.jsp");
         } else {
-            dispatcher = request.getRequestDispatcher("login.html");
+            dispatcher = request.getRequestDispatcher("login.jsp");
         }
         dispatcher.forward(request, response);
     }

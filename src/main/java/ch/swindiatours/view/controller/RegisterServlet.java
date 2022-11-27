@@ -18,8 +18,6 @@ import java.util.Objects;
 public class RegisterServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
-    @Inject
     private CustomerService customerService;
 
     /**
@@ -67,7 +65,7 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("register.jsp").include(request, response);
                 out.print("<center><p>Please Enter Valid Details to Register</p></center>");
             } else {
-                request.getRequestDispatcher("register_2.jsp").include(request, response);
+                request.getRequestDispatcher("index.jsp").include(request, response);
             }
         }
     }

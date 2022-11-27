@@ -32,7 +32,7 @@ public class BookingGetServlet extends HttpServlet {
      *
      * @param request  -
      * @param response HTML formatted string showing all orders
-     *                 Forward to "login.html" if no valid user signed in
+     *                 Forward to "login.jsp" if no valid user signed in
      * @throws IOException
      * @throws ServletException
      */
@@ -105,7 +105,7 @@ public class BookingGetServlet extends HttpServlet {
                 out.println("</div>"); // End container
             }
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         }
     }

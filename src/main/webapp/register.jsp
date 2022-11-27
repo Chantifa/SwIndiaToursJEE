@@ -1,75 +1,98 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: chant
-  Date: 10/09/2022
-  Time: 08:01
-  To change this template use File | Settings | File Templates.
---%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@include file="header.jspf"%>
-<%@page import="ch.swindiatours.model.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Register</title>
-
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+	<script src="resources/js/jquery-3.6.0.min.js"></script>
+	<script src="resources/js/onlineshop-web.js"></script>
+	<link rel="stylesheet" href="resources/css/styles.css">
+	<title>SwIndia Tours</title>
 </head>
 <body>
-    <h3>Register</h3>
-    <form method="POST" action="register">
-        <fieldset>
-            <legend>Register</legend>
-        <table class="table-bordered">
-            <tbody>
-            <tr>
-                <th>
-                    <td>
-                <input type="name" name="firstname" size="40" maxlength="40" title="John" placeholder="your firstname"
-                required="required">
-            </td>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <td>
-                <input type="name" name="name" size="40" maxlength="40" title="Muster" placeholder="your lastname">
-            </td>
-                </th>
-            </tr>
-            <tr>
-                <th colspan="2">
-                <%--@declare id="email"--%><label for="email">e-mail:</label>
-                </th>
-            <td><input type="email" name="email" size="40" maxlength="40" title="muster@example.ch" placeholder="enter your email"
-            pattern=".{6,40}" required="required">
-            </td>
-            </tr>
-            <tr>
-                <th>
-                    <%--@declare id="password"--%><label for="password">password</label>
-                </th>
-                <td>
-                    <input type="password" name="password" size="10" maxlength="10" title="6-10 characters" placeholder="please enter your password"
-                    pattern=".{6,10}" required="required">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" class="btn btn-success" value="Register" />
-                    <input type="reset">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <br>
-        <p>Already registered? <a href="login.jsp">Login Here</a><p/>
-<br>
-        </fieldset>
-</form>
-    <%@ include  file="foot.jspf"%>
+<!--Navigation bar-->
+<div id="nav-placeholder"></div>
 
+
+<!-- Hauptteil der Seite -->
+<main>
+	<section class="vh-100 gradient-custom">
+		<div class="container py-5 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+						<div class="card-body p-4 p-md-5">
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">register</h3>
+							<form name="registerForm" background-color="red" action="register" onsubmit="return validateInput()" method="post" autocomplete="on">
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<input type="text" id="firstName" class="form-control form-control-lg" name="firstname" required/>
+											<label class="form-label" for="firstName">firstname</label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<input type="text" id="lastName" class="form-control form-control-lg" name="lastname" required/>
+											<label class="form-label" for="lastName">lastname</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="mb-4 pb-2 pb-md-0 ">
+										<div class="form-outline">
+											<input type="email" id="email" class="form-control form-control-lg" name="email" required/>
+											<label class="form-label" for="email">E-Mail</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<input type="password" class="form-control form-control-lg" id="password" name="password" required/>
+											<label for="password" class="form-label">password</label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<input type="password" class="form-control form-control-lg" id="repeatepassword" name="repeatepassword" required/>
+											<label for="repeatepassword" class="form-label">repeat the password</label>
+										</div>
+									</div>
+									<div id ="message"></div>
+								</div>
+
+								<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+									<button type="submit" class="btn btn-primary btn-lg">register</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<!-- Footer am schluss der Seite -->
+<div id="footer-placeholder"></div>
 </body>
+<script>
+	function validateInput(){
+		var password = document.forms["registerForm"]["password"].value;
+		var repeatepassword = document.forms["registerForm"]["repeatepassword"].value;
+		var message = document.getElementById("message");
+
+		console.log(password);
+		console.log(repeatepassword);
+		if (password === repeatepassword) {
+			message.innerHTML=" ";
+		}else{
+			message.innerHTML = "Not same password!!";
+			return false;
+		}
+	}
+</script>
 </html>
