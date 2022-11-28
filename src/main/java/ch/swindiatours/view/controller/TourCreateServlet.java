@@ -23,7 +23,7 @@ import java.util.Base64;
  * @version 1.0
  */
 @MultipartConfig
-@WebServlet("/TourCreate")
+@WebServlet(name="tourCreate", value="/tourCreate")
 public class TourCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Inject
@@ -57,14 +57,13 @@ public class TourCreateServlet extends HttpServlet {
                 Tour tour = new Tour();
                 tour.setTitel(title);
                 tour.setDescription(desc);
-                tour.setPrice(BigDecimal.valueOf(Double.valueOf(price)));
+                tour.setPrice(BigDecimal.valueOf(Double.parseDouble(price)));
                 tour.setImg(encodefile);
 
                 toursService.findAll();
                 toursService.create(tour);
             }
         }
-        // "../index.jsp"
         dispatcher.forward(request, response);
     }
 }

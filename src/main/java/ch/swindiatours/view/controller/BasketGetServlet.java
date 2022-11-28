@@ -24,7 +24,7 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/basket")
+@WebServlet(name="basket", value="/basket")
 public class BasketGetServlet extends HttpServlet {
 
     /**

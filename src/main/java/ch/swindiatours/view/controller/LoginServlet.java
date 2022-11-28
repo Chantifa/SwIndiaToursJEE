@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/login")
+@WebServlet(name="login", value = "/login")
 public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

@@ -19,7 +19,7 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/TourSearch")
+@WebServlet(name="tourSearch",value="/tourSearch")
 public class TourSearchServlet extends HttpServlet {
 
     /**

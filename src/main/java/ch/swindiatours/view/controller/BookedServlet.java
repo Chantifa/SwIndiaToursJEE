@@ -20,7 +20,7 @@ import java.io.IOException;
  * @author Lisia Ponti / Philipp Frey
  * @version 1.0
  */
-@WebServlet("/TourBooked")
+@WebServlet(name="tourBooked", value="/tourBooked")
 public class BookedServlet extends HttpServlet {
 
     /**

@@ -28,7 +28,7 @@ import java.util.List;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/booking")
+@WebServlet(name="booking",value ="/booking")
 public class TourBookingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

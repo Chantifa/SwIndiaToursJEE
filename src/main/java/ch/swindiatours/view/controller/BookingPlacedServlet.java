@@ -21,7 +21,7 @@ import java.math.BigDecimal;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/BookingPlace")
+@WebServlet(name="bookingPlace" ,value="/bookingPlace")
 public class BookingPlacedServlet extends HttpServlet {
 
     /**

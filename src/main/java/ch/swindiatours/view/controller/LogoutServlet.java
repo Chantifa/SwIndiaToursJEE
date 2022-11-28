@@ -16,7 +16,7 @@ import java.io.IOException;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/Logout")
+@WebServlet(name="logout", value="/logout")
 public class LogoutServlet extends HttpServlet {
 
     /**
@@ -31,10 +31,7 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         final HttpSession session = request.getSession();
         final RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        //Benutzer benutzer = (Benutzer) session.getAttribute("benutzer");
-        //if (benutzer != null) {
         session.removeAttribute("customer");
-        //}
         dispatcher.forward(request, response);
     }
 }

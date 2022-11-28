@@ -23,7 +23,7 @@ import java.util.List;
  * @author chanti
  * @version 1.0
  */
-@WebServlet("/BookingGet")
+@WebServlet(name="bookingGet", value="/bookingGet")
 public class BookingGetServlet extends HttpServlet {
 
     /**

@@ -18,7 +18,7 @@ import static ch.swindiatours.model.Role.CUSTOMER;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/Navbar")
+@WebServlet(name="navbar", value="/navbar")
 public class NavbarServlet extends HttpServlet {
 
     /**

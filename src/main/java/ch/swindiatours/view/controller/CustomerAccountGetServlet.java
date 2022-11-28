@@ -19,7 +19,7 @@ import java.io.PrintWriter;
  * @author chant
  * @version 1.0
  */
-@WebServlet("/CustomerAccountGet")
+@WebServlet(name="customerAccountGet", value ="/customerAccountGet")
 public class CustomerAccountGetServlet extends HttpServlet {
     /**
      * POST Method to get user account information
