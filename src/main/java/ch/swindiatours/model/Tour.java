@@ -21,7 +21,7 @@ public class Tour {
     @Column(name = "tourId")
     @NotNull
     private Long tourId;
-    @Column(name = "titel")
+    @Column(name = "title")
     @NotNull
     private String title;
     @Column(name = "description")
