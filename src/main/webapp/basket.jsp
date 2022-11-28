@@ -23,11 +23,11 @@
 		
 		</main>
 		
-		<!-- Footer am schluss der Seite -->
+		<!-- Footer at the end of the site -->
 		<div id="footer-placeholder"></div>
 	</body>
 	<script>
-		$.post("BasketGet", function(data){
+		$.post("basketGet", function(data){
 			$("#basket-placeholder").replaceWith(data);
 		});
 	</script>

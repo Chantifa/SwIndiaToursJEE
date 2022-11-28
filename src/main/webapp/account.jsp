@@ -4,7 +4,6 @@
 	<head>
 		<meta charset="UTF-8" />
 	   	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-		<link rel="icon" type="image/png" href="resources/img/favicon.png">
 		<script src="resources/js/jquery-3.6.0.min.js"></script>
 		<script src="resources/js/onlineshop-web.js"></script>
 		<link rel="stylesheet" href="resources/css/styles.css">
@@ -19,7 +18,7 @@
 		<!-- Hauptteil der Seite -->
 		<main>
 		
-		<h2>Konto Daten</h2><br>
+		<h2>profile</h2><br>
 		<div id="account-placeholder"></div>
 		
 		</main>
@@ -28,7 +27,7 @@
 		<div id="footer-placeholder"></div>
 	</body>
 	<script>
-		$.post("UserAccountGet", function(data){
+		$.post("customerAccountGet", function(data){
 			$("#account-placeholder").replaceWith(data);
 		});
 	</script>

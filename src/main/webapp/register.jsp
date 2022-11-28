@@ -23,7 +23,7 @@
 					<div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
 						<div class="card-body p-4 p-md-5">
 							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">register</h3>
-							<form name="registerForm" background-color="red" action="register" onsubmit="return validateInput()" method="post" autocomplete="on">
+							<form name="registerForm" action="register" onsubmit="return validateInput()" method="post" autocomplete="on">
 								<div class="row">
 									<div class="col-md-6 mb-4">
 										<div class="form-outline">
@@ -43,7 +43,7 @@
 									<div class="mb-4 pb-2 pb-md-0 ">
 										<div class="form-outline">
 											<input type="email" id="email" class="form-control form-control-lg" name="email" required/>
-											<label class="form-label" for="email">E-Mail</label>
+											<label class="form-label" for="email">email</label>
 										</div>
 									</div>
 								</div>
@@ -58,7 +58,7 @@
 									<div class="col-md-6 mb-4">
 										<div class="form-outline">
 											<input type="password" class="form-control form-control-lg" id="repeatepassword" name="repeatepassword" required/>
-											<label for="repeatepassword" class="form-label">repeat the password</label>
+											<label for="repeatepassword" class="form-label">confirm password</label>
 										</div>
 									</div>
 									<div id ="message"></div>

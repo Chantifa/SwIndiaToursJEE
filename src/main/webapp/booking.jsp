@@ -4,7 +4,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-		<link rel="icon" type="image/png" href="resources/img/favicon.png">
 		<script src="resources/js/jquery-3.6.0.min.js"></script>
 		<script src="resources/js/onlineshop-web.js"></script>
 		<link rel="stylesheet" href="resources/css/styles.css">
@@ -16,7 +15,7 @@
 		<div id="nav-placeholder"></div>
 		
 		
-		<!-- Hauptteil der Seite -->
+		<!-- main part of the website -->
 		<main>
 		
 		<h1>Booking</h1>
@@ -24,12 +23,12 @@
 		
 		</main>
 		
-		<!-- Footer am schluss der Seite -->
+		<!-- Footer at the end -->
 		<div id="footer-placeholder"></div>
 	</body>
 	<script>
-		$.post("OrdersGet", function(data){
-			$("#order-placeholder").replaceWith(data);
+		$.post("booingGet", function(data){
+			$("#booking-placeholder").replaceWith(data);
 		});
 	</script>
 </html>

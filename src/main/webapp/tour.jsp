@@ -13,8 +13,9 @@
 <!--Navigation bar-->
 <div id="nav-placeholder"></div>
 
-<!-- Hauptteil der Seite -->
+<!-- main part of the website -->
 <main>
+    <div id="tour-placeholder"></div>
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
@@ -22,7 +23,8 @@
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create tour</h3>
-                            <form name="tourForm" action="TourCreate" method="post" autocomplete="on" enctype="multipart/form-data">
+                            <div action="tour" method="get"></div>
+                            <form name="tourForm" action="tour" method="post" autocomplete="on" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="mb-4 pb-2 pb-md-0 ">
                                         <div class="form-outline">
@@ -72,4 +74,9 @@
 <!-- Footer am schluss der Seite -->
 <div id="footer-placeholder"></div>
 </body>
+<script>
+    $.post("tour", function(data){
+        $("#tour-placeholder").replaceWith(data);
+    });
+</script>
 </html>
