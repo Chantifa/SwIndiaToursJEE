@@ -2,9 +2,11 @@ package ch.swindiatours.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @NamedQueries({
         @NamedQuery(name = "customer.getAll", query = "SELECT customer FROM Customer customer"),
-        @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :id"),
+        @NamedQuery(name = "customer.getById", query = "SELECT customer FROM Customer customer WHERE customer.userId = :userId"),
         @NamedQuery(name = "customer.getByUsername", query = "SELECT customer FROM Customer customer WHERE customer.username = :username"),
         @NamedQuery(name = "customer.getByPassword", query = "SELECT customer FROM Customer customer WHERE customer.password = :password"),
         @NamedQuery(name = "customer.getByFristName", query = "SELECT customer FROM Customer customer WHERE customer.firstName = :firstname"),
@@ -13,7 +15,7 @@ import jakarta.persistence.*;
 })
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
 public class Customer {
     private Long userId;
     private String username;
@@ -101,14 +103,13 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
         Customer that = (Customer) o;
 
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (role != null ? !email.equals(that.role) : that.role != null) return false;
-        return true;
+        if (!Objects.equals(userId, that.userId)) return false;
+        if (!Objects.equals(username, that.username)) return false;
+        if (!Objects.equals(password, that.password)) return false;
+        if (!Objects.equals(firstName, that.firstName)) return false;
+        if (!Objects.equals(lastName, that.lastName)) return false;
+        if (!Objects.equals(email, that.email)) return false;
+        return Objects.equals(role, that.role);
     }
 
     @Override
